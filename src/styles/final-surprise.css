@@ -1,0 +1,357 @@
+
+.final-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 22px 30px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(219, 160, 166, 0.19), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(139, 76, 86, 0.13), transparent 30%),
+    var(--cream);
+  color: var(--brown);
+}
+
+.final-content {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.final-icon {
+  width: 85px;
+  height: 85px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  background: #f2dce0;
+  color: var(--burgundy);
+  animation: finalHeartbeat 2s ease-in-out infinite;
+}
+
+.final-icon-sparkle {
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  color: #c18d58;
+}
+
+.final-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 20px;
+  color: var(--burgundy);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.final-title {
+  margin: 0;
+  color: var(--brown);
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 7vw, 66px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.final-title span {
+  display: block;
+  color: var(--burgundy);
+  font-style: italic;
+}
+
+.final-description {
+  max-width: 420px;
+  margin: 22px auto 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.final-reveal-button,
+.final-restart-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  background: var(--burgundy);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.final-reveal-button:hover,
+.final-restart-button:hover {
+  transform: translateY(-3px);
+  background: var(--burgundy-dark);
+}
+
+.final-message-card {
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+  margin: 0 auto;
+  padding: 35px clamp(23px, 6vw, 48px);
+  overflow: hidden;
+  text-align: left;
+  background: rgba(255, 250, 240, 0.92);
+  border: 1px solid rgba(139, 76, 86, 0.18);
+  border-radius: 5px;
+  box-shadow: 0 18px 55px rgba(78, 48, 42, 0.12);
+  animation: finalAppear 0.8s ease both;
+}
+
+.final-card-decoration {
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  color: rgba(151, 83, 91, 0.14);
+  font-family: var(--font-heading);
+  font-size: 65px;
+}
+
+.final-message-label {
+  margin-bottom: 20px;
+  color: var(--burgundy);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.final-message-card h2 {
+  margin: 0 0 22px;
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: 25px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.final-message-card > p:not(.final-message-label):not(.final-highlight) {
+  margin-bottom: 17px;
+  color: #65504a;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.final-highlight {
+  margin-top: 25px;
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.final-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin-top: 25px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.final-signature strong {
+  color: var(--burgundy);
+  font-size: 27px;
+}
+
+.final-bottom {
+  margin-top: 25px;
+  animation: finalAppear 0.8s ease both;
+}
+
+.final-bottom > p {
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.final-restart-button {
+  padding: 12px 22px;
+  background: transparent;
+  color: var(--burgundy);
+  border: 1px solid rgba(139, 76, 86, 0.35);
+}
+
+.final-restart-button:hover {
+  background: var(--burgundy);
+  color: white;
+}
+
+.final-small-note {
+  margin-top: 28px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.final-floating {
+  position: absolute;
+  z-index: 1;
+  color: rgba(151, 83, 91, 0.2);
+  pointer-events: none;
+  animation: finalFloat 5s ease-in-out infinite;
+}
+
+.final-heart-one {
+  top: 13%;
+  left: 10%;
+  font-size: 45px;
+}
+
+.final-heart-two {
+  top: 35%;
+  right: 9%;
+  font-size: 35px;
+  animation-delay: 1s;
+}
+
+.final-star-one {
+  bottom: 18%;
+  left: 13%;
+  font-size: 42px;
+  animation-delay: 2s;
+}
+
+.final-star-two {
+  top: 16%;
+  right: 20%;
+  font-size: 28px;
+  animation-delay: 1.5s;
+}
+
+.final-flower-one {
+  bottom: 12%;
+  right: 12%;
+  font-size: 48px;
+  animation-delay: 0.5s;
+}
+
+.final-flower-two {
+  top: 50%;
+  left: 5%;
+  font-size: 30px;
+  animation-delay: 2.5s;
+}
+
+.final-footer {
+  margin-top: 35px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  text-align: center;
+}
+
+@keyframes finalHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes finalFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-13px) rotate(8deg);
+  }
+}
+
+@keyframes finalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .final-page {
+    padding: 55px 17px 25px;
+  }
+
+  .final-description {
+    font-size: 12px;
+  }
+
+  .final-message-card {
+    padding: 28px 22px;
+  }
+
+  .final-message-card h2 {
+    font-size: 22px;
+  }
+
+  .final-message-card > p:not(.final-message-label):not(.final-highlight) {
+    font-size: 11px;
+  }
+
+  .final-floating {
+    opacity: 0.7;
+  }
+
+  .final-heart-one {
+    left: 3%;
+    font-size: 30px;
+  }
+
+  .final-heart-two {
+    right: 3%;
+    font-size: 27px;
+  }
+
+  .final-star-one {
+    left: 4%;
+    font-size: 30px;
+  }
+
+  .final-star-two {
+    right: 5%;
+    font-size: 22px;
+  }
+
+  .final-flower-one {
+    right: 4%;
+    font-size: 32px;
+  }
+
+  .final-flower-two {
+    left: 2%;
+    font-size: 23px;
+  }
+}

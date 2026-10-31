@@ -1,0 +1,344 @@
+
+.minigame-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 65px 22px 30px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(219, 160, 166, 0.15), transparent 28%),
+    radial-gradient(circle at 90% 85%, rgba(139, 76, 86, 0.10), transparent 30%),
+    var(--cream);
+  color: var(--brown);
+}
+
+.minigame-content {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.minigame-eyebrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.minigame-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 7vw, 64px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.minigame-title span {
+  color: var(--burgundy);
+  font-style: italic;
+}
+
+.minigame-description {
+  max-width: 430px;
+  margin: 17px auto 30px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.minigame-score {
+  max-width: 420px;
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--burgundy);
+}
+
+.minigame-score-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.minigame-score strong {
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
+
+.minigame-progress {
+  max-width: 420px;
+  height: 7px;
+  margin: 0 auto 30px;
+  overflow: hidden;
+  background: rgba(139, 76, 86, 0.12);
+  border-radius: 20px;
+}
+
+.minigame-progress-fill {
+  height: 100%;
+  background: var(--burgundy);
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
+
+.heart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 510px;
+  margin: 0 auto;
+}
+
+.heart-card {
+  min-height: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 8px;
+  border: 1px solid rgba(139, 76, 86, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 250, 240, 0.8);
+  color: var(--burgundy);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.heart-card:hover:not(:disabled) {
+  transform: translateY(-5px);
+  background: #fff8f3;
+  box-shadow: 0 10px 25px rgba(93, 48, 55, 0.10);
+}
+
+.heart-card:disabled {
+  cursor: default;
+}
+
+.heart-card.collected {
+  background: #f2dce0;
+  border-color: rgba(139, 76, 86, 0.3);
+  animation: heartCollected 0.4s ease;
+}
+
+.heart-card-icon {
+  display: flex;
+  color: var(--burgundy);
+}
+
+.heart-card-number {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.minigame-hint {
+  margin-top: 22px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.minigame-complete {
+  max-width: 500px;
+  margin: 10px auto 0;
+  padding: 30px 25px;
+  background: rgba(255, 250, 240, 0.85);
+  border: 1px solid rgba(139, 76, 86, 0.16);
+  border-radius: 15px;
+  animation: minigameAppear 0.6s ease both;
+}
+
+.minigame-complete-icon {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: #f2dce0;
+  color: var(--burgundy);
+}
+
+.minigame-sparkle {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  color: #c18d58;
+}
+
+.minigame-complete-eyebrow {
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.minigame-complete h2 {
+  margin: 10px 0;
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: clamp(25px, 5vw, 35px);
+  font-weight: 500;
+}
+
+.minigame-complete-message {
+  color: var(--brown);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.minigame-final-message {
+  margin: 18px 0 25px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.minigame-continue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 30px;
+  background: var(--burgundy);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.minigame-continue:hover {
+  transform: translateY(-3px);
+  background: var(--burgundy-dark);
+}
+
+.minigame-decoration {
+  position: absolute;
+  color: rgba(151, 83, 91, 0.2);
+  pointer-events: none;
+}
+
+.minigame-decoration-one {
+  top: 12%;
+  left: 9%;
+  font-size: 50px;
+  transform: rotate(-18deg);
+}
+
+.minigame-decoration-two {
+  top: 25%;
+  right: 10%;
+  font-size: 43px;
+  transform: rotate(15deg);
+}
+
+.minigame-decoration-three {
+  right: 13%;
+  bottom: 15%;
+  font-size: 40px;
+}
+
+.minigame-footer {
+  margin-top: 35px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+@keyframes heartCollected {
+  0% {
+    transform: scale(0.9);
+  }
+
+  60% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes minigameAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .minigame-page {
+    padding: 55px 17px 25px;
+  }
+
+  .minigame-description {
+    font-size: 12px;
+  }
+
+  .heart-grid {
+    gap: 9px;
+  }
+
+  .heart-card {
+    min-height: 115px;
+    padding: 12px 5px;
+  }
+
+  .heart-card-icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .heart-card-number {
+    font-size: 9px;
+  }
+
+  .minigame-decoration-one {
+    left: 2%;
+    font-size: 32px;
+  }
+
+  .minigame-decoration-two {
+    right: 3%;
+    font-size: 30px;
+  }
+
+  .minigame-decoration-three {
+    right: 5%;
+    bottom: 7%;
+    font-size: 28px;
+  }
+}

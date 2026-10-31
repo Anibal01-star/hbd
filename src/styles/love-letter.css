@@ -1,0 +1,517 @@
+
+/* ==========================================
+   LOVE LETTER PAGE
+========================================== */
+
+.love-letter-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 22px 40px;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(219, 160, 166, 0.17),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(139, 76, 86, 0.11),
+      transparent 32%
+    ),
+    var(--cream);
+
+  color: var(--brown);
+}
+
+/* ==========================================
+   DECORATIONS
+========================================== */
+
+.love-letter-decoration {
+  position: absolute;
+  color: rgba(151, 83, 91, 0.22);
+  pointer-events: none;
+  user-select: none;
+  animation: letterFloat 6s ease-in-out infinite;
+}
+
+.decoration-one {
+  top: 12%;
+  left: 9%;
+  font-size: 55px;
+  transform: rotate(-18deg);
+}
+
+.decoration-two {
+  right: 10%;
+  top: 25%;
+  font-size: 45px;
+  animation-delay: 1s;
+}
+
+.decoration-three {
+  right: 13%;
+  bottom: 15%;
+  font-size: 45px;
+  animation-delay: 2s;
+}
+
+/* ==========================================
+   LETTER INTRO
+========================================== */
+
+.letter-intro {
+  width: 100%;
+  max-width: 560px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: letterFadeUp 0.9s ease both;
+}
+
+.letter-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.letter-title {
+  margin: 0;
+  color: var(--brown);
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 7vw, 65px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.letter-title em {
+  display: block;
+  color: var(--burgundy);
+  font-weight: 400;
+}
+
+.letter-subtitle {
+  max-width: 430px;
+  margin: 18px auto 35px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   ENVELOPE BUTTON
+========================================== */
+
+.letter-envelope-button {
+  display: block;
+  width: min(300px, 78vw);
+  height: 200px;
+  margin: 10px auto 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.letter-envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 15px 20px rgba(83, 48, 48, 0.13));
+  transition: transform 0.3s ease;
+}
+
+.letter-envelope-button:hover .letter-envelope {
+  transform: translateY(-6px);
+}
+
+.letter-envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #d9a9a3;
+  border-radius: 5px;
+}
+
+.letter-envelope-paper {
+  position: absolute;
+  z-index: 1;
+  left: 10%;
+  top: -15px;
+  width: 80%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 25px;
+  color: var(--burgundy);
+  background: #fffaf0;
+  border: 1px solid rgba(130, 83, 76, 0.12);
+  transition: transform 0.7s ease;
+}
+
+.letter-envelope-front {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: #c98f91;
+  clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+}
+
+.letter-envelope-flap {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: #e5b9b1;
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+}
+
+.letter-envelope-seal {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 58%;
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  color: #fff4e9;
+  background: var(--burgundy);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+}
+
+/* ==========================================
+   OPEN LETTER BUTTON
+========================================== */
+
+.letter-open-button,
+.letter-continue-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 46px;
+  padding: 13px 25px;
+
+  border: 1px solid var(--burgundy);
+  border-radius: 30px;
+
+  background: var(--burgundy);
+  color: white;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(116, 61, 76, 0.15);
+  transition: all 0.25s ease;
+}
+
+.letter-open-button:hover,
+.letter-continue-button:hover {
+  transform: translateY(-3px);
+  background: var(--burgundy-dark, #78394f);
+  box-shadow: 0 10px 22px rgba(116, 61, 76, 0.2);
+}
+
+.letter-hint {
+  margin-top: 16px;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ==========================================
+   LETTER CONTENT
+========================================== */
+
+.letter-content {
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: letterFadeUp 0.8s ease both;
+}
+
+.letter-paper {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  padding: 35px clamp(22px, 6vw, 55px) 32px;
+
+  position: relative;
+
+  text-align: left;
+
+  background:
+    linear-gradient(
+      rgba(255, 252, 243, 0.97),
+      rgba(255, 252, 243, 0.97)
+    ),
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      rgba(173, 128, 115, 0.12) 32px
+    );
+
+  border: 1px solid rgba(155, 111, 100, 0.2);
+  border-radius: 4px;
+
+  box-shadow: 0 18px 55px rgba(78, 48, 42, 0.12);
+
+  animation: letterAppear 0.9s ease both;
+}
+
+.letter-paper-decoration {
+  position: absolute;
+  top: 17px;
+  right: 22px;
+  color: rgba(151, 83, 91, 0.35);
+  font-size: 25px;
+}
+
+/* ==========================================
+   LETTER HEADER
+========================================== */
+
+.letter-date {
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(139, 76, 86, 0.2);
+
+  color: var(--burgundy);
+
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.letter-heading {
+  margin-top: 24px;
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 4vw, 31px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.letter-heading em {
+  color: var(--rose);
+  font-weight: 400;
+}
+
+/* ==========================================
+   LETTER BODY
+========================================== */
+
+.letter-body {
+  padding: 22px 0 10px;
+  color: #65504a;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 2;
+  text-align: justify;
+}
+
+.letter-body p {
+  margin: 0 0 18px;
+}
+
+.letter-body p:first-child {
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.letter-body .letter-closing {
+  margin-top: 24px;
+  color: var(--burgundy);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* ==========================================
+   SIGNATURE
+========================================== */
+
+.letter-signature {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(139, 76, 86, 0.16);
+
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.letter-signature strong {
+  color: var(--burgundy);
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.letter-bottom-decoration {
+  margin-top: 24px;
+  color: #b17d7b;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* ==========================================
+   CONTINUE BUTTON
+========================================== */
+
+.letter-continue-button {
+  margin: 0 auto;
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes letterFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes letterFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+  .love-letter-page {
+    padding: 55px 18px 30px;
+  }
+
+  .letter-subtitle {
+    margin-bottom: 28px;
+    font-size: 12px;
+  }
+
+  .letter-envelope-button {
+    width: min(280px, 78vw);
+    height: 185px;
+  }
+
+  .letter-paper {
+    padding: 27px 21px;
+  }
+
+  .letter-date {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .letter-heading {
+    font-size: 25px;
+  }
+
+  .letter-body {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .letter-body p:first-child {
+    font-size: 16px;
+  }
+
+  .letter-body .letter-closing {
+    font-size: 15px;
+  }
+
+  .letter-signature strong {
+    font-size: 19px;
+  }
+
+  .decoration-one {
+    left: 2%;
+    top: 8%;
+    font-size: 35px;
+  }
+
+  .decoration-two {
+    right: 3%;
+    top: 20%;
+    font-size: 30px;
+  }
+
+  .decoration-three {
+    right: 5%;
+    bottom: 8%;
+    font-size: 30px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .love-letter-page *,
+  .love-letter-page *::before,
+  .love-letter-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

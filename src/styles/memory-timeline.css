@@ -1,0 +1,492 @@
+
+/* =====================================
+   MEMORY TIMELINE
+===================================== */
+
+.memory-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  padding: 90px 20px 60px;
+
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(237, 202, 205, .3), transparent 35%),
+    radial-gradient(ellipse at 90% 60%, rgba(232, 207, 185, .3), transparent 35%),
+    #fffaf5;
+
+  color: #754052;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Decorations */
+
+.memory-decoration {
+  position: absolute;
+  pointer-events: none;
+  color: #d9a9b3;
+  opacity: .5;
+  animation: memoryFloat 6s ease-in-out infinite;
+}
+
+.memory-flower {
+  top: 130px;
+  left: 6%;
+  font-size: 45px;
+}
+
+.memory-heart {
+  top: 420px;
+  right: 7%;
+  font-size: 42px;
+  animation-delay: 1s;
+}
+
+.memory-star {
+  top: 900px;
+  left: 5%;
+  font-size: 35px;
+  animation-delay: 2s;
+}
+
+/* Header */
+
+.memory-header {
+  max-width: 650px;
+  margin: 0 auto 100px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.memory-eyebrow {
+  color: #a96b7e;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.memory-main-title {
+  margin-top: 25px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(42px, 7vw, 68px);
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.memory-main-title em,
+.memory-ending h2 em {
+  color: #b86f86;
+}
+
+.memory-intro {
+  margin-top: 24px;
+  color: #987b75;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.memory-heart-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0;
+  color: #bd8190;
+}
+
+.memory-heart-divider span {
+  width: 45px;
+  height: 1px;
+  background: #dfc0c0;
+}
+
+.memory-scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: #b58b8e;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.memory-scroll-hint svg {
+  animation: memoryBounce 1.5s infinite;
+}
+
+/* Timeline */
+
+.memory-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0 70px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #d9a9b3 5%,
+    #d9a9b3 95%,
+    transparent
+  );
+}
+
+.memory-item {
+  width: 50%;
+  position: relative;
+  margin-bottom: 100px;
+  opacity: 0;
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.memory-item.memory-left {
+  padding-right: 55px;
+  transform: translateX(-35px);
+}
+
+.memory-item.memory-right {
+  margin-left: 50%;
+  padding-left: 55px;
+  transform: translateX(35px);
+}
+
+.memory-item.memory-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Timeline dot */
+
+.memory-dot {
+  position: absolute;
+  top: 28px;
+  z-index: 3;
+
+  width: 34px;
+  height: 34px;
+  border: 5px solid #fffaf5;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #bd8190;
+  color: white;
+
+  box-shadow: 0 0 0 1px #d9a9b3;
+}
+
+.memory-left .memory-dot {
+  right: -17px;
+}
+
+.memory-right .memory-dot {
+  left: -17px;
+}
+
+/* Memory card */
+
+.memory-card {
+  overflow: hidden;
+  border: 1px solid #eedfda;
+  border-radius: 5px;
+  background: #fffdf9;
+  box-shadow: 0 15px 40px rgba(116, 61, 76, .08);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 45px rgba(116, 61, 76, .14);
+}
+
+/* Photo */
+
+.memory-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f2e3df;
+}
+
+.memory-photo img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.memory-card:hover .memory-photo img {
+  transform: scale(1.05);
+}
+
+.memory-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ae7d88;
+  background:
+    linear-gradient(135deg, #f6e5e1, #f1d8d8);
+}
+
+.memory-photo-placeholder span {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+.memory-photo-placeholder small {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.memory-photo-number {
+  position: absolute;
+  z-index: 3;
+  left: 13px;
+  bottom: 13px;
+  padding: 7px 10px;
+  background: rgba(255, 250, 245, .9);
+  color: #875366;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+
+/* Card content */
+
+.memory-card-content {
+  padding: 25px 25px 28px;
+}
+
+.memory-date {
+  color: #b47b8a;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.memory-card-content h2 {
+  margin-top: 12px;
+  color: #754052;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.memory-card-content p {
+  margin-top: 13px;
+  color: #947b75;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.memory-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #b47b8a;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Ending */
+
+.memory-ending {
+  max-width: 570px;
+  margin: 30px auto 70px;
+  padding: 50px 25px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.memory-ending-icon {
+  margin-bottom: 22px;
+  color: #b86f86;
+  font-size: 45px;
+  animation: memoryHeartbeat 1.8s infinite;
+}
+
+.memory-ending h2 {
+  margin-top: 20px;
+  color: #754052;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(35px, 6vw, 48px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.memory-ending > p {
+  max-width: 430px;
+  margin: 25px auto;
+  color: #947b75;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.memory-ending-signature {
+  margin: 30px 0;
+  color: #b86f86;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+}
+
+/* Button */
+
+.memory-continue-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 15px 27px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: #754052;
+  color: white;
+
+  font-size: 11px;
+  letter-spacing: .5px;
+
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(116, 61, 76, .15);
+
+  transition: all .3s ease;
+}
+
+.memory-continue-button:hover {
+  background: #b86f86;
+  transform: translateY(-4px);
+}
+
+/* Footer */
+
+.memory-footer {
+  text-align: center;
+  color: #b99a96;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* Animations */
+
+@keyframes memoryFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(8deg);
+  }
+}
+
+@keyframes memoryBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes memoryHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .memory-page {
+    padding: 75px 18px 40px;
+  }
+
+  .memory-header {
+    margin-bottom: 70px;
+  }
+
+  .timeline-line {
+    left: 13px;
+  }
+
+  .memory-item,
+  .memory-item.memory-left,
+  .memory-item.memory-right {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 65px;
+    padding-left: 45px;
+    padding-right: 0;
+    transform: translateY(25px);
+  }
+
+  .memory-item.memory-visible {
+    transform: translateY(0);
+  }
+
+  .memory-left .memory-dot,
+  .memory-right .memory-dot {
+    left: -3px;
+    right: auto;
+  }
+
+  .memory-card-content {
+    padding: 20px;
+  }
+
+  .memory-card-content h2 {
+    font-size: 21px;
+  }
+
+  .memory-flower {
+    left: 2%;
+    font-size: 30px;
+  }
+
+  .memory-heart {
+    right: 2%;
+    font-size: 30px;
+  }
+
+  .memory-ending {
+    padding: 30px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-page *,
+  .memory-page *::before,
+  .memory-page *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
