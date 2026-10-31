@@ -21,7 +21,7 @@ const memories: Memory[] = [
     title: 'The Beginning of Us',
     description:
       'Setiap cerita indah pasti memiliki awal. Dan aku bersyukur, ceritaku dimulai dengan mengenalmu.',
-    image: '/images/memories/memory-1.jpg',
+    image: '/images/memory-1.jpg',
     label: 'A beautiful beginning',
   },
   {
@@ -29,7 +29,7 @@ const memories: Memory[] = [
     title: 'One of My Favorite Memories',
     description:
       'Mungkin terlihat sederhana, tetapi momen seperti ini selalu punya tempat tersendiri di hatiku.',
-    image: '/images/memories/memory-2.jpg',
+    image: '/images/memory-2.jpg',
     label: 'A moment to remember',
   },
   {
@@ -37,7 +37,7 @@ const memories: Memory[] = [
     title: 'The Little Things',
     description:
       'Aku suka bagaimana hal-hal kecil bersamamu bisa menjadi sesuatu yang begitu berarti.',
-    image: '/images/memories/memory-3.jpg',
+    image: '/images/memory-3.jpg',
     label: 'Little things, big feelings',
   },
   {
@@ -45,7 +45,7 @@ const memories: Memory[] = [
     title: 'Our Story Continues',
     description:
       'Masih banyak cerita yang belum kita tulis. Semoga kita punya lebih banyak waktu untuk menciptakannya bersama.',
-    image: '/images/memories/memory-4.jpg',
+    image: '/images/memory-4.jpg',
     label: 'To many more memories',
   },
 ]

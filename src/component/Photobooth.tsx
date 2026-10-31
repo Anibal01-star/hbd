@@ -581,7 +581,7 @@ function Photobooth({ onContinue }: PhotoboothProps) {
             </p>
 
             <div className="photobooth-photo-selector">
-              {photos.map((photo, index) => (
+              {photos.map((_, index) => (
                 <button
                   key={index}
                   type="button"
